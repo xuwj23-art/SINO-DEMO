@@ -1,0 +1,1 @@
+"""Knowledge Base RAG backend application package."""

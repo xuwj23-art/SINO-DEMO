@@ -1,0 +1,29 @@
+# ============================================================
+# Demo-only backend dependencies (lightweight install)
+# ============================================================
+# This is a STRIPPED-DOWN subset of requirements.txt containing only what the
+# demo actually imports at runtime (fastapi/uvicorn/pydantic/anthropic/httpx).
+#
+# It deliberately OMITS the heavy production deps that the demo never imports:
+#   - torch + sentence-transformers  (~2-3 GB, slow to install)
+#   - PyMuPDF (PDF parsing happens in the browser via pdf.js)
+#   - SQLAlchemy / alembic / aiosqlite (demo is stateless, no DB)
+#
+# Use this on the deployment machine (e.g. the office intern PC) for a fast,
+# small install. The full requirements.txt is still used for real development.
+# ============================================================
+
+# --- Web framework ---
+fastapi>=0.110.0,<0.120.0
+uvicorn[standard]>=0.29.0
+pydantic>=2.6.0,<3.0.0
+pydantic-settings>=2.1.0
+
+# --- HTTP client (polling the regulatory test site) ---
+httpx>=0.27.0
+
+# --- Generation provider ---
+anthropic>=0.40.0
+
+# --- Utils ---
+python-multipart>=0.0.9

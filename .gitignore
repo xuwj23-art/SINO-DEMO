@@ -1,0 +1,72 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+*.whl
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- Node / Frontend ---
+node_modules/
+frontend/dist/
+frontend/build/
+*.tsbuildinfo
+.vite/
+
+# --- Environment & secrets ---
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+
+# --- Data & uploads (never commit real data) ---
+# NOTE: only ignore the BACKEND data dirs. The frontend/src/data/ folder holds
+# FICTIONAL synthetic demo personas and MUST be tracked — a blanket `data/`
+# rule previously swallowed it and broke `git clone` builds.
+/backend/data/
+backend/data/
+uploads/
+real_docs/
+customer_data/
+private_docs/
+*.sqlite
+*.db
+
+# --- IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- Testing & CI caches ---
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Scratch / local working dirs (not part of the project) ---
+tmp/
+outputs/
+.zcode/
