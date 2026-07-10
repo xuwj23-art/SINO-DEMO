@@ -37,6 +37,9 @@ detect_python() {
 }
 PYTHON="$(detect_python)"
 
+LOG_DIR="$ROOT/tmp/demo-logs"
+mkdir -p "$LOG_DIR"
+
 BACKEND_PORT=8000
 FRONTEND_PORT=5173
 TESTSITE_PORT=3001
