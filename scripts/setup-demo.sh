@@ -24,12 +24,17 @@ echo ""
 # --- 1. Detect Python -------------------------------------------------------
 detect_python() {
   if [ -n "${DEMO_PYTHON:-}" ] && [ -x "$DEMO_PYTHON" ]; then echo "$DEMO_PYTHON"; return; fi
+  # Resolve the Windows username robustly: $USERNAME in Git Bash, else whoami.
+  local winuser="${USERNAME:-$(whoami 2>/dev/null | sed 's#.*[/\\\\]##')}"
   local candidates=(
-    "/c/Users/$USER/anaconda3/envs/Sino-ai/python.exe"
-    "/c/Users/$USERNAME/anaconda3/envs/Sino-ai/python.exe"
+    "/c/Users/$winuser/anaconda3/envs/Sino-ai/python.exe"
+    "/c/Users/$winuser/miniconda3/envs/Sino-ai/python.exe"
     "/c/ProgramData/anaconda3/envs/Sino-ai/python.exe"
-    "/c/Users/$USER/anaconda3/python.exe"
+    "/c/ProgramData/miniconda3/envs/Sino-ai/python.exe"
+    "/c/Users/$winuser/anaconda3/python.exe"
+    "/c/Users/$winuser/miniconda3/python.exe"
     "/c/ProgramData/anaconda3/python.exe"
+    "/c/ProgramData/miniconda3/python.exe"
     "$(command -v python 2>/dev/null)"
     "$(command -v python3 2>/dev/null)"
   )
